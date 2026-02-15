@@ -604,15 +604,16 @@ main() {
         status)
             echo "=== Mac Metrics Monitor Status ==="
             echo ""
-            if launchctl list | grep -q com.user.mac-monitor; then
+            # Use exact match to avoid matching cleanup agent
+            if launchctl list | grep -E "^[0-9]+\s+[0-9]+\s+com\.user\.mac-monitor$" > /dev/null 2>&1; then
                 echo "Monitor agent: RUNNING"
-                launchctl list | grep mac-monitor
+                launchctl list | grep -E "com\.user\.mac-monitor$"
             else
                 echo "Monitor agent: NOT RUNNING"
             fi
             
             echo ""
-            if launchctl list | grep -q com.user.mac-monitor-cleanup; then
+            if launchctl list | grep "com.user.mac-monitor-cleanup" > /dev/null 2>&1; then
                 echo "Cleanup agent: RUNNING"
             else
                 echo "Cleanup agent: NOT RUNNING"
