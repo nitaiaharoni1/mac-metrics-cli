@@ -7,7 +7,7 @@ class MacMetricsCli < Formula
   homepage "https://github.com/nitaiaharoni1/mac-metrics-cli"
   url "https://github.com/nitaiaharoni1/mac-metrics-cli/archive/refs/tags/v1.0.0.tar.gz"
   version "1.0.0"
-  sha256 "0e794c4a6f5f3a5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5e5"
+  sha256 "6c2f569556d47c54598db0f9fa9e533e8ae2695d21f7404ef2e13d1b2f4fbaec"
   license "MIT"
   head "https://github.com/nitaiaharoni1/mac-metrics-cli.git", branch: "main"
 
