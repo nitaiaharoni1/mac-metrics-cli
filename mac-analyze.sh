@@ -238,7 +238,11 @@ show_trends() {
     local metric=${2:-"cpu"}
     local interval=${3:-"hourly"}  # hourly, daily
     
-    echo -e "${BOLD}${CYAN}=== ${metric^^} Trends ===${NC}"
+    # Convert to uppercase for display (bash 3.2 compatible)
+    local metric_upper
+    metric_upper=$(echo "$metric" | tr '[:lower:]' '[:upper:]')
+    
+    echo -e "${BOLD}${CYAN}=== ${metric_upper} Trends ===${NC}"
     echo -e "${YELLOW}Interval: ${interval}${NC}"
     echo ""
     
