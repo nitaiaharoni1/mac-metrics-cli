@@ -1,0 +1,7 @@
+.*.swp
+.*.swo
+*~
+.DS_Store
+# Test data
+*.csv
+!example-data.csv
