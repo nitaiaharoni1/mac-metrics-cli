@@ -604,17 +604,16 @@ main() {
         status)
             echo "=== Mac Metrics Monitor Status ==="
             echo ""
-            # Use exact match to avoid matching cleanup agent
-            if launchctl list | grep -E "^[0-9]+\s+[0-9]+\s+com\.user\.mac-monitor$" > /dev/null 2>&1; then
-                echo "Monitor agent: RUNNING"
-                launchctl list | grep -E "com\.user\.mac-monitor$"
+            # Check if monitor agent is loaded (runs on interval)
+            if launchctl list | grep -E "com\.user\.mac-monitor$" > /dev/null 2>&1; then
+                echo "Monitor agent: RUNNING (loaded, collects every 5 min)"
             else
                 echo "Monitor agent: NOT RUNNING"
             fi
             
             echo ""
             if launchctl list | grep "com.user.mac-monitor-cleanup" > /dev/null 2>&1; then
-                echo "Cleanup agent: RUNNING"
+                echo "Cleanup agent: RUNNING (Sundays 3AM)"
             else
                 echo "Cleanup agent: NOT RUNNING"
             fi
@@ -622,6 +621,10 @@ main() {
             echo ""
             echo "Data location: ${LOG_DIR}"
             ls -lh "$LOG_DIR"/*.csv 2>/dev/null | awk '{print "  " $9 "   (" $5 ")"}'
+            
+            echo ""
+            samples=$(tail -n +2 "$LOG_DIR"/*.csv 2>/dev/null | wc -l | tr -d ' ')
+            echo "Total samples collected: ${samples:-0}"
             return 0
             ;;
         help|--help|-h)
