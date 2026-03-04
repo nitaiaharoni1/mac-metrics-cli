@@ -5,9 +5,9 @@
 class MacMetricsCli < Formula
   desc "Monitor your Mac's performance metrics over time with per-process attribution"
   homepage "https://github.com/nitaiaharoni1/mac-metrics-cli"
-  url "https://github.com/nitaiaharoni1/mac-metrics-cli/archive/refs/tags/v1.0.0.tar.gz"
-  version "1.0.0"
-  sha256 "6c2f569556d47c54598db0f9fa9e533e8ae2695d21f7404ef2e13d1b2f4fbaec"
+  url "https://github.com/nitaiaharoni1/mac-metrics-cli/archive/refs/tags/v1.0.1.tar.gz"
+  version "1.0.1"
+  sha256 "2b7f25a8a8f3f29afcda778a121b908c336c44940115751d1a5e688574893e0d"
   license "MIT"
   head "https://github.com/nitaiaharoni1/mac-metrics-cli.git", branch: "main"
 
